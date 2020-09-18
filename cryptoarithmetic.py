@@ -2,14 +2,16 @@ strAddends = []
 strSum = ""
 
 
-def addend(row):
+def addend(row):  # Checks if the given row is addend
     if row < len(strAddends):
         return True
     else:
         return False
 
 
-def assigned(solution, row, col):
+def assigned(
+    solution, row, col
+):  # checks if any value has been assigned to particular row and column
     if addend(row):
         if len(strAddends[row]) > col:
             if strAddends[row][-col - 1] in solution:
@@ -20,21 +22,23 @@ def assigned(solution, row, col):
     return False
 
 
-def match(solution, sum, col):
+def match(solution, sum, col):  # checks if the sum matches
     if solution[strSum[-col - 1]] == sum % 10:
         return True
     else:
         return False
 
 
-def used(unassignedDigits, digit):
+def used(unassignedDigits, digit):  # checks if the digit has already been used
     if digit not in unassignedDigits:
         return True
     else:
         return False
 
 
-def assign(solution, unassignedDigits, row, col, value):
+def assign(
+    solution, unassignedDigits, row, col, value
+):  # assigns a value to the alphabet
     if addend(row):
         solution[strAddends[row][-col - 1]] = value
     else:
@@ -43,7 +47,9 @@ def assign(solution, unassignedDigits, row, col, value):
     return [solution, unassignedDigits]
 
 
-def unassign(solution, unassignedDigits, row, col):
+def unassign(
+    solution, unassignedDigits, row, col
+):  # removes the assigned value from the solution
     if addend(row):
         value = solution[strAddends[row][-col - 1]]
         solution.pop(strAddends[row][-col - 1])
@@ -55,7 +61,7 @@ def unassign(solution, unassignedDigits, row, col):
     return [solution, unassignedDigits]
 
 
-def genSum(solution, col, carry):
+def genSum(solution, col, carry):  # generates the sum of particular column
     sum = carry
     for i in range(len(strAddends)):
         if exists(i, col):
@@ -63,7 +69,7 @@ def genSum(solution, col, carry):
     return sum
 
 
-def exists(row, col):
+def exists(row, col):  # checks if the particular addend exists
     if len(strAddends[row]) > col:
         return True
     else:
@@ -133,7 +139,7 @@ def solve(expression):
     solveIter({}, unassignedDigits, 0, 0, 0)
 
 
-def initialValues(expression):
+def initialValues(expression):  # generates the values to begin with
     values = {}
     global strAddends
     global strSum
