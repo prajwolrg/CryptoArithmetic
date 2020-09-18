@@ -137,9 +137,12 @@ def initialValues(expression):
     values = {}
     global strAddends
     global strSum
-    [strAddends, strSum] = expression.split("=")
-    strAddends = strAddends.split("+")
-    strAddends.sort(key=len)
+    [istrAddends, strSum] = expression.split("=")
+    istrAddends = istrAddends.split("+")
+    istrAddends.sort(key=len)
+    for strAddend in istrAddends:
+        strAddends.append(strAddend.strip())
+    strSum = strSum.strip()
 
 
 expression = input("Enter expression: ")
