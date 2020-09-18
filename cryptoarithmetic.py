@@ -2,48 +2,6 @@ strAddends = []
 strSum = ""
 
 
-def checkSumValue(values, index):
-    sumValue = 0
-    for k in range(len(strAddends)):
-        if index <= len(strAddends[k]):
-            sumValue += values[strAddends[k][-index]]
-    statement = "checksum value for index " + str(index) + " is" + str(sumValue)
-    print(statement)
-
-    if values[strSum[-index]] == sumValue % 10:
-        return True
-
-    return False
-
-
-def generateValue(values, key):
-    for i in range(10):
-        if checkValue(values, key, i):
-            print("generating value for ", key, i)
-            values[key] = i
-            return i
-
-
-def choice(values, index):
-    for k in range(len(strAddends)):
-        if len(strAddends[k]) >= index + 1:
-            generateValue(values, strAddends[k][i])
-    if checkSumValue(values, i):
-        solveIter(values, index + 1)
-
-
-def checkValue(values, key, value):
-    # Check the previous values for reptition
-    if values[key] == value:
-        return True
-    index = list(values.keys()).index(key)
-    for i in range(index):
-        if values[list(values.keys())[i]] == value:
-            # print([list(values.keys())[i]], "has the same value as ", key)
-            return False
-    return True
-
-
 def addend(row):
     if row < len(strAddends):
         return True
