@@ -71,9 +71,6 @@ def exists(row, col):
 
 
 def solveIter(solution, unassignedDigits, row, col, carry):
-    # print(solution)
-    # print(unassignedDigits)
-    # print()
     if col >= len(strSum):
         print(solution)
         return True
@@ -131,34 +128,9 @@ def solveIter(solution, unassignedDigits, row, col, carry):
 
 
 def solve(expression):
-    values = initialValues(expression)
     unassignedDigits = [i for i in range(10)]
     solveIter({}, unassignedDigits, 0, 0, 0)
 
 
-def initialValues(expression):
-    values = {}
-    global strAddends
-    global strSum
-    [strAddends, strSum] = expression.split("=")
-    strAddends = strAddends.split("+")
-    strAddends.sort(key=len)
-
-    for k in range(len(strAddends)):
-        for i in range(-1, -len(strAddends[k]) - 1, -1):
-            for j in range(k, len(strAddends)):
-                if strAddends[j][i] not in values:
-                    values[strAddends[j][i]] = -1
-            if strSum[i] not in values:
-                values[strSum[i]] = -1
-
-    for k in range(-len(strAddends[-1]), -len(strSum) - 1, -1):
-        if strSum[k] not in values:
-            values[strSum[k]] = -1
-
-    return values
-
-
 solve("send+more=money")
-# checkValue(values, "n", -1)
 
