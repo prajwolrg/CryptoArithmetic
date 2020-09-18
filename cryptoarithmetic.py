@@ -128,9 +128,20 @@ def solveIter(solution, unassignedDigits, row, col, carry):
 
 
 def solve(expression):
+    initialValues(expression)
     unassignedDigits = [i for i in range(10)]
     solveIter({}, unassignedDigits, 0, 0, 0)
 
 
-solve("send+more=money")
+def initialValues(expression):
+    values = {}
+    global strAddends
+    global strSum
+    [strAddends, strSum] = expression.split("=")
+    strAddends = strAddends.split("+")
+    strAddends.sort(key=len)
+
+
+expression = input("Enter expression: ")
+solve(expression)
 
